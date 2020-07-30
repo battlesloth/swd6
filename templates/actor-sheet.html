@@ -1,0 +1,127 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
+            <div class="resource">
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="attributes">Attributes</a>
+        <a class="item" data-tab="items">Items</a>
+        <a class="item" data-tab="description">Description</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            <div class="row">
+                <div class="column">
+                    {{#each actor.data.attributes.phys as |attr id|}}
+                    <div class="cell">
+                        <div class="attribmain">
+                            <div class="attribname">
+                                {{attr.label}}
+                            </div>
+                            <div class="attribvalues">
+                                <span class="modplus">
+                                    <input class="mod" type="text" name="actor.data.attributes.phys.{{id}}.value"
+                                        value="{{attr.value}}" data-dtype="Number" />
+                                    +
+                                    <input class="value" type="text" name="actor.data.attributes.phys.{{id}}.mod"
+                                        value="{{attr.mod}}" data-dtype="Number" />
+                                </span>
+                            </div>
+                        </div>
+                        <div class="attribskill">
+                            {{#each attr.skills as |skill key|}}
+                            <div class="skillrow">
+                                <div class="skillname">
+                                    {{skill.name}}
+                                </div>
+                                <div class="skillvalues">
+                                    <input class="mod" type="text"
+                                        name="actor.data.attributes.phys.{{id}}.skills.{{key}}.value"
+                                        value="{{skill.value}}" data-dtype="Number" />
+                                    +
+                                    <input class="value" type="text"
+                                        name="data.attributes.phys.{{id}}.skills.{{key}}.mod" value="{{skill.mod}}"
+                                        data-dtype="Number" />
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="column">
+                    {{#each actor.data.attributes.ment as |attr id|}}
+                    <div class="cell">
+                        <div class="attribmain">
+                            <div class="attribname">
+                                {{attr.label}}
+                            </div>
+                            <div class="attribvalues">
+                                <span class="modplus">
+                                    <input class="mod" type="text" name="actor.data.attributes.ment.{{id}}.value"
+                                        value="{{attr.value}}" data-dtype="Number" />
+                                    +
+                                    <input class="value" type="text" name="actor.data.attributes.ment.{{id}}.mod"
+                                        value="{{attr.mod}}" data-dtype="Number" />
+                                </span>
+                            </div>
+                        </div>
+                        <div class="attribskill">
+                            {{#each attr.skills as |skill key|}}
+                            <div class="skillrow">
+                                <div class="skillname">
+                                    {{skill.name}}
+                                </div>
+                                <div class="skillvalues">
+                                    <input class="mod" type="text"
+                                        name="actor.data.attributes.ment.{{id}}.skills.{{key}}.value"
+                                        value="{{skill.value}}" data-dtype="Number" />
+                                    +
+                                    <input class="value" type="text"
+                                        name="data.attributes.ment.{{id}}.skills.{{key}}.mod" value="{{skill.mod}}"
+                                        data-dtype="Number" />
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        {{!-- Owned Items Tab --}}
+        <div class="tab items" data-group="primary" data-tab="items">
+            <ol class="item-list">
+                {{#each actor.items as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+                    <h4 class="item-name">{{item.name}}</h4>
+                    <div class="item-controls">
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+
+        {{!-- Biography Tab --}}
+        <div class="tab biography" data-group="primary" data-tab="description">
+            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+        </div>
+
+    </section>
+</form>

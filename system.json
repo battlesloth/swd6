@@ -3,57 +3,21 @@
     "title": "Star Wars D6",
     "description": "A system for playing Star Wars D6 in Foundery VTT",
     "version": "0.1.0",
+    "minimumCoreVersion": "0.5.6",
+    "compatibleCoreVersion": "0.5.7",
     "templateVersion": 2,
     "author": "jrector",
-    "scripts": [
-      "scripts/swd6.js"
-     ],
-    "esmodules": [
-      "scripts/swd6.mjs"
-    ],
-    "styles": [
-      "styles/swd6.css"
-    ],
-    "packs": [
-      {
-        "name": "monsters",
-        "label": "Aliens and Adverseries",
-        "system": "swd6",
-        "module": "main",
-        "path": "packs/monsters.db",
-        "entity": "Actor"
-      },
-      {
-        "name": "vehicles",
-        "label": "Vehicles",
-        "system": "swd6",
-        "module": "main",
-        "path": "packs/vehicles.db",
-        "entity": "Item"
-      },
-      {
-        "name": "items",
-        "label": "Items",
-        "system": "swd6",
-        "module": "main",
-        "path": "packs/items.db",
-        "entity": "Item"
-      }
-    ],
-    "languages": [
-      {
-        "lang": "en",
-        "name": "English",
-        "path": "lang/en.json"
-      }
-    ],
+    "esmodules": ["module/swd6.js"],
+    "styles": ["styles/swd6.css"],
+    "packs": [],
+    "languages":[],
     "socket": false,
     "initiative": "1d6",
     "gridDistance": 5,
     "gridUnits": "meter",
-    "primaryTokenAttribute": "resources.health",
-    "secondaryTokenAttribute": "resources.characterpoints",
+    "primaryTokenAttribute": "health",
+    "secondaryTokenAttribute": "characterpoints",
     "url": "https://your/hosted/system/repo/",
-    "manifest": "https://your/hosted/system/repo/system.json",
-    "download": "https://your/packaged/download/archive.zip"
+    "manifest": "https://github.com/idrinkandmakethings/swd6/raw/master/system.json",
+    "download": "https://github.com/idrinkandmakethings/swd6/-/archive/swd6-release-0.1.0.zip"
   }

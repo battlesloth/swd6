@@ -1,0 +1,184 @@
+.swd6 {
+  
+}
+
+.swd6 .inline-label { 
+  white-space: nowrap;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float:left;     
+}
+  .swd6 .window-content {
+    height: 100%;
+    padding: 5px;
+    overflow-y: hidden;
+  }
+  .swd6  .sheet-header {
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  .swd6  .sheet-header .profile-img {
+    flex: 0 0 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
+  .swd6  .sheet-header .header-fields {
+    flex: 1;
+    height: 100px;
+  }
+  .swd6  .sheet-header h1.charname {
+    height: 50px;
+    padding: 0px;
+    margin: 5px 0;
+    border-bottom: 0;
+  }
+  .swd6 .sheet-header h1.charname input {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  .swd6  .resource {
+    width: 50%;
+    height: 40px;
+    margin-top: 10px;
+    float: left;
+    text-align: center;
+  }
+  .swd6  .resource input {
+    width: 100px;
+    height: 28px;
+  }
+  .swd6  .tabs {
+    height: 40px;
+    border-top: 1px solid #AAA;
+    border-bottom: 1px solid #AAA;
+  }
+  .swd6  .tabs .item {
+    line-height: 40px;
+    font-weight: bold;
+  }
+  .swd6  .tabs .item.active {
+    text-decoration: underline;
+    text-shadow: none;
+  }
+  .swd6  .sheet-body {
+    overflow: hidden;
+  }
+  .swd6  .sheet-body .tab {
+    height: 100%;
+    overflow-y: auto;
+  }
+  .swd6  .editor,
+  .swd6  .editor-content {
+    height: 100%;
+  }
+  .swd6  .item-list {
+    list-style: none;
+    margin: 7px 0;
+    padding: 0;
+    overflow-y: auto;
+  }
+  .swd6  .item-list .item {
+    height: 30px;
+    line-height: 24px;
+    padding: 3px 0;
+    border-bottom: 1px solid #BBB;
+  }
+  .swd6  .item-list .item img {
+    flex: 0 0 24px;
+    margin-right: 5px;
+  }
+  .swd6  .item-list .item-name {
+    margin: 0;
+  }
+  .swd6  .item-list .item-controls {
+    flex: 0 0 36px;
+  }
+  
+  .swd6 .attributes .row{
+    display: flex;
+    height: 100%;
+  }
+
+  .swd6 .attributes .column{
+    flex: 50%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-flow: column;
+  }
+
+  .swd6 .attributes .column .cell{
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    min-height: 100px;
+  }
+
+  .swd6 .attributes .column .attribmain{
+    display: flex;
+    flex-flow: row;
+    height: 30px;
+  }
+
+  .swd6 .attributes .column .attribname{
+    flex-grow: 1;
+  }
+
+  .swd6 .attributes .column .attribvalues{
+    width: 70px;
+  }
+
+  .swd6 .attributes .column .attribskill{
+    flex-grow: 1;
+    overflow-y: scroll;
+  }
+
+  .swd6 .attributes .column .skillrow{
+    display: flex;
+    flex-flow: row;
+    height: 30px;
+    margin-left: 20px;
+  }
+
+  .swd6 .attributes .column .skillname{
+    flex-grow: 1;
+  }
+
+  .swd6 .attributes .column .skillvalues{
+    width: 70px;
+  }
+
+  .swd6 .attributes .value{
+    width: 12px;
+    text-align: center;
+  }
+
+  .swd6 .attributes .modplus{
+    font-weight: bold;  
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .swd6 .attributes .mod{
+    width: 12px;
+  
+    text-align: center;
+  }
+
+
+  .swd6 .sheet.actor {
+    min-width: 560px;
+    min-height: 420px;
+  }
+  .swd6 .sheet.item {
+    min-width: 460px;
+    min-height: 400px;
+  }
+  

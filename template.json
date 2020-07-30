@@ -1,0 +1,126 @@
+{
+    "Actor": {
+        "types": [
+            "character",
+            "npc"
+        ],
+        "templates": {
+            "common": {
+                "attributes": {
+                    "phys": {
+                        "dex": {
+                            "label": "Dexterity",
+                            "value": 3,
+                            "mod": 0,
+                            "skills": {
+                                "blaster": {
+                                    "name": "Blaster",
+                                    "value": 3,
+                                    "mod": 1
+                                },
+                                "dodge": {
+                                    "name": "Dodge",
+                                    "value": 3,
+                                    "mod": 2
+                                }
+                            }
+                        },
+                        "str": {
+                            "label": "Strength",
+                            "value": 3,
+                            "mod": 0,
+                            "skills": {}
+                        },
+                        "per": {
+                            "label": "Perception",
+                            "value": 3,
+                            "mod": 0,
+                            "skills": {
+                                "con": {
+                                    "name": "Con",
+                                    "value": 3,
+                                    "mod": 1
+                                },
+                                "bargin": {
+                                    "name": "Bargin",
+                                    "value": 3,
+                                    "mod": 2
+                                }
+                            }
+                        }
+                    },
+                    "ment": {
+                        "kno": {
+                            "label": "Knowledge",
+                            "value": 3,
+                            "mod": 0,
+                            "skills": {}
+                        },
+                        "mec": {
+                            "label": "Mechanical",
+                            "value": 3,
+                            "mod": 0,
+                            "skills": {
+                                "starshippilot": {
+                                    "name": "Starship Pilot",
+                                    "value": 3,
+                                    "mod": 1
+                                },
+                                "shields": {
+                                    "name": "Shields",
+                                    "value": 3,
+                                    "mod": 2
+                                }
+                            }
+                        },
+                        "tec": {
+                            "label": "Technical",
+                            "value": 3,
+                            "mod": 0,
+                            "skills": {}
+                        }
+                    }
+                },
+                "abilities": {
+                    "move": {
+                        "value": 6
+                    },
+                    "force": {
+                        "value": 0
+                    },
+                    "forcepoints": {
+                        "value": 1
+                    },
+                    "darkside": {
+                        "value": 0
+                    },
+                    "charpoints": {
+                        "value": 0
+                    }
+                }
+            }
+        },
+        "character": {
+            "templates": [
+                "common"
+            ],
+            "biography": ""
+        },
+        "npc": {
+            "templates": [
+                "common"
+            ]
+        }
+    },
+    "Item": {
+        "types": [
+            "item"
+        ],
+        "item": {
+            "description": "",
+            "quantity": 1,
+            "weight": 0,
+            "attributes": {}
+        }
+    }
+}
