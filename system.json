@@ -8,7 +8,7 @@
     "templateVersion": 2,
     "author": "jrector",
     "esmodules": ["module/swd6.js"],
-    "styles": ["styles/swd6.css"],
+    "styles": ["swd6.css"],
     "packs": [],
     "languages":[],
     "socket": false,

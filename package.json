@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/idrinkandmakethings/swd6#readme",
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-less": "^4.0.1"
   }
 }
