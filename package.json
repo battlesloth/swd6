@@ -1,0 +1,22 @@
+{
+  "name": "swd6",
+  "version": "1.0.0",
+  "description": "An implementaion of the Star Wars D6 system for Foundery VTT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idrinkandmakethings/swd6.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idrinkandmakethings/swd6/issues"
+  },
+  "homepage": "https://github.com/idrinkandmakethings/swd6#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
