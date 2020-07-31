@@ -20,10 +20,7 @@
     {{!-- Sheet Body --}}
     <section class="sheet-body">
 
-        {{!-- Modal --}}
-        <div class="statmodal">
-            
-        </div>
+
         
 
         {{!-- Attributes Tab --}}
@@ -38,10 +35,10 @@
                             </div>
                             <div class="attribvalues">
                                 <span class="modplus">
-                                    <input class="mod" type="text" name="actor.data.attributes.phys.{{id}}.value"
+                                    <input class="mod" type="text" name="data.attributes.phys.{{id}}.value"
                                         value="{{attr.value}}" data-dtype="Number" />
                                     +
-                                    <input class="value" type="text" name="actor.data.attributes.phys.{{id}}.mod"
+                                    <input class="value" type="text" name="data.attributes.phys.{{id}}.mod"
                                         value="{{attr.mod}}" data-dtype="Number" />
                                 </span>
                             </div>
@@ -54,7 +51,7 @@
                                 </div>
                                 <div class="skillvalues">
                                     <input class="mod" type="text"
-                                        name="actor.data.attributes.phys.{{id}}.skills.{{key}}.value"
+                                        name="data.attributes.phys.{{id}}.skills.{{key}}.value"
                                         value="{{skill.value}}" data-dtype="Number" />
                                     +
                                     <input class="value" type="text"
@@ -76,10 +73,10 @@
                             </div>
                             <div class="attribvalues">
                                 <span class="modplus">
-                                    <input class="mod" type="text" name="actor.data.attributes.ment.{{id}}.value"
+                                    <input class="mod" type="text" name="data.attributes.ment.{{id}}.value"
                                         value="{{attr.value}}" data-dtype="Number" />
                                     +
-                                    <input class="value" type="text" name="actor.data.attributes.ment.{{id}}.mod"
+                                    <input class="value" type="text" name="data.attributes.ment.{{id}}.mod"
                                         value="{{attr.mod}}" data-dtype="Number" />
                                 </span>
                             </div>
@@ -92,7 +89,7 @@
                                 </div>
                                 <div class="skillvalues">
                                     <input class="mod" type="text"
-                                        name="actor.data.attributes.ment.{{id}}.skills.{{key}}.value"
+                                        name="data.attributes.ment.{{id}}.skills.{{key}}.value"
                                         value="{{skill.value}}" data-dtype="Number" />
                                     +
                                     <input class="value" type="text"

@@ -1,14 +1,16 @@
+import ActorSheetSwd6 from "./base.js"
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
- * @extends {ActorSheet}
+ * @extends {ActorSheetSwd6}
  */
-export class Swd6ActorSheet extends ActorSheet {
+export default class ActorSheetSwd6Character extends ActorSheetSwd6 {
 
     /** @override */
       static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-          classes: ["swd6", "sheet", "actor"],
-          template: "systems/swd6/templates/actor-sheet.html",
+          classes: ["swd6", "sheet", "actor", "character"],
+          template: "systems/swd6/templates/actors/character-sheet.html",
         width: 600,
         height: 600,
         tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "attributes"}],
@@ -16,12 +18,7 @@ export class Swd6ActorSheet extends ActorSheet {
       });
     }
 
-    /** @override */
-    getData(){
-      const sheetData = super.getData();
 
-      return sheetData;
-    }
 
     /** @override */
       activateListeners(html) {

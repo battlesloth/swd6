@@ -5,9 +5,15 @@
  */
 
 // Import Modules
-import { Swd6Actor } from "./actor.js";
-import { Swd6ItemSheet } from "./item-sheet.js";
-import { Swd6ActorSheet } from "./actor-sheet.js";
+
+// Import Entities
+import ActorSwd6 from "./module/actor/entity.js";
+import ItemSwd6 from "./module/item/entity.js";
+
+
+
+import ItemSheetSwd6 from "./module/item/item-sheet.js";
+import ActorSheetSwd6Character from "./module/actor/sheets/character.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -26,13 +32,14 @@ Hooks.once("init", async function() {
     };
   
       // Define custom Entity classes
-    CONFIG.Actor.entityClass = Swd6Actor;
+    CONFIG.Actor.entityClass = ActorSwd6;
+    CONFIG.Item.entityClass = ItemSwd6;
   
     // Register sheet application classes
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("swd6", Swd6ActorSheet, { makeDefault: true });
+    Actors.registerSheet("swd6", ActorSheetSwd6Character, { types: ["character"], makeDefault: true });
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("swd6", Swd6ItemSheet, {makeDefault: true});
+    Items.registerSheet("swd6", ItemSheetSwd6, {makeDefault: true});
   
     // Register system settings
     //game.settings.register("swd6", "macroShorthand", {

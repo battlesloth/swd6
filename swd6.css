@@ -60,61 +60,65 @@
   height: 100%;
   overflow-y: auto;
 }
-.swd6.sheet.actor.character .attributes .value {
+.swd6.sheet.actor.character .attributes {
+  height: 100%;
+  overflow-y: auto;
+}
+.swd6.sheet.actor.character .value {
   width: 12px;
   text-align: center;
 }
-.swd6.sheet.actor.character .attributes .modplus {
+.swd6.sheet.actor.character .modplus {
   font-weight: bold;
   padding-left: 5px;
   padding-right: 5px;
 }
-.swd6.sheet.actor.character .attributes .mod {
+.swd6.sheet.actor.character .mod {
   width: 12px;
   text-align: center;
 }
-.swd6.sheet.actor.character .attributes .row {
+.swd6.sheet.actor.character .row {
   display: flex;
   height: 100%;
 }
-.swd6.sheet.actor.character .attributes .column {
+.swd6.sheet.actor.character .column {
   flex: 50%;
   height: 100%;
   padding: 10px;
   display: flex;
   flex-flow: column;
 }
-.swd6.sheet.actor.character .attributes .column .cell {
+.swd6.sheet.actor.character .cell {
   flex-grow: 1;
   display: flex;
   flex-flow: column;
   min-height: 100px;
 }
-.swd6.sheet.actor.character .attributes .column .attribmain {
+.swd6.sheet.actor.character .attribmain {
   display: flex;
   flex-flow: row;
   height: 30px;
 }
-.swd6.sheet.actor.character .attributes .column .attribname {
+.swd6.sheet.actor.character .attribmain .attribname {
   flex-grow: 1;
 }
-.swd6.sheet.actor.character .attributes .column .attribvalues {
+.swd6.sheet.actor.character .attribmain .attribvalues {
   width: 70px;
 }
-.swd6.sheet.actor.character .attributes .column .attribskill {
+.swd6.sheet.actor.character .attribskill {
   flex-grow: 1;
   overflow-y: scroll;
 }
-.swd6.sheet.actor.character .attributes .column .skillrow {
+.swd6.sheet.actor.character .attribskill .skillrow {
   display: flex;
   flex-flow: row;
   height: 30px;
   margin-left: 20px;
 }
-.swd6.sheet.actor.character .attributes .column .skillname {
+.swd6.sheet.actor.character .attribskill .skillname {
   flex-grow: 1;
 }
-.swd6.sheet.actor.character .attributes .column .skillvalues {
+.swd6.sheet.actor.character .attribskill .skillvalues {
   width: 70px;
 }
 .swd6.sheet.actor.character .item-list {

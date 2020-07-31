@@ -75,65 +75,87 @@
     }
 
     .attributes {
-        .value{
-            width: 12px;
-            text-align: center;
-          }
-          .modplus{
-            font-weight: bold;  
-            padding-left: 5px;
-            padding-right: 5px;
-          }
-          .mod{
-            width: 12px;
-          
-            text-align: center;
-          }
-        .row {
-            display: flex;
-            height: 100%;
-        }
-        .column{
-            flex: 50%;
-            height: 100%;
-            padding: 10px;
-            display: flex;
-            flex-flow: column;
-            .cell{
-                flex-grow: 1;
-                display: flex;
-                flex-flow: column;
-                min-height: 100px;
-              }
-              .attribmain{
-                display: flex;
-                flex-flow: row;
-                height: 30px;
-              }
-              .attribname{
-                flex-grow: 1;
-              }
-              .attribvalues{
-                width: 70px;
-              }
-              .attribskill{
-                flex-grow: 1;
-                overflow-y: scroll;
-              }
-              .skillrow{
-                display: flex;
-                flex-flow: row;
-                height: 30px;
-                margin-left: 20px;
-              }
-              .skillname{
-                flex-grow: 1;
-              }
-              .skillvalues{
-                width: 70px;
-              }
-          }
+        height: 100%;
+        overflow-y: auto;
+
     }
+
+    .value {
+        width: 12px;
+        text-align: center;
+    }
+
+    .modplus {
+        font-weight: bold;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .mod {
+        width: 12px;
+
+        text-align: center;
+    }
+
+    .row {
+        display: flex;
+        height: 100%;
+    }
+
+    .column {
+        flex: 50%;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-flow: column;
+    }
+
+    .cell {
+        flex-grow: 1;
+        display: flex;
+        flex-flow: column;
+        min-height: 100px;
+    }
+
+    .attribmain {
+        display: flex;
+        flex-flow: row;
+        height: 30px;
+
+        .attribname {
+            flex-grow: 1;
+        }
+
+        .attribvalues {
+            width: 70px;
+        }
+
+    }
+
+
+    .attribskill {
+        flex-grow: 1;
+        overflow-y: scroll;
+
+        .skillrow {
+            display: flex;
+            flex-flow: row;
+            height: 30px;
+            margin-left: 20px;
+        }
+
+        .skillname {
+            flex-grow: 1;
+        }
+
+        .skillvalues {
+            width: 70px;
+        }
+
+    }
+
+
+
 
     .item-list {
         list-style: none;
@@ -169,5 +191,4 @@
     .editor-content {
         height: 100%;
     }
-
 }

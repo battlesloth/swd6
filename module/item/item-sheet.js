@@ -2,13 +2,13 @@
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class Swd6ItemSheet extends ItemSheet {
+export default class ItemSheetSwd6 extends ItemSheet {
 
     /** @override */
       static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
               classes: ["swd6", "sheet", "item"],
-              template: "systems/swd6/templates/item-sheet.html",
+              template: "systems/swd6/templates/items/item-sheet.html",
               width: 520,
               height: 480,
         tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
