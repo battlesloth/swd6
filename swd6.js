@@ -41,14 +41,5 @@ Hooks.once("init", async function() {
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("swd6", ItemSheetSwd6, {makeDefault: true});
   
-    // Register system settings
-    //game.settings.register("swd6", "macroShorthand", {
-    //  name: "Shortened Macro Syntax",
-    //  hint: "Enable a shortened macro syntax which allows referencing attributes directly, for example @str instead of @attributes.str.value. Disable this setting if you need the ability to reference the full attribute model, for example @attributes.str.label.",
-    //  scope: "world",
-    //  type: Boolean,
-    //  default: false,
-    //  config: false
-    //});
   });
   

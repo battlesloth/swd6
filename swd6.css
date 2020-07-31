@@ -11,6 +11,24 @@
   /*  Sheet Body                               */
   /* ----------------------------------------- */
 }
+.swd6.sheet.actor.character .new-skill-modal {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.swd6.sheet.actor.character .new-skill-modal .modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
 .swd6.sheet.actor.character .sheet-header {
   height: 100px;
   overflow: hidden;
@@ -18,10 +36,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: 10px;
 }
 .swd6.sheet.actor.character .sheet-header .profile-img {
-  flex: 0 0 100px;
+  flex: 0 0 90px;
   height: 100px;
   margin-right: 10px;
 }
@@ -64,11 +81,17 @@
   height: 100%;
   overflow-y: auto;
 }
+.swd6.sheet.actor.character a.attribute-control {
+  flex: 0 0 20px;
+  text-align: center;
+  line-height: 28px;
+  border: none;
+}
 .swd6.sheet.actor.character .value {
   width: 12px;
   text-align: center;
 }
-.swd6.sheet.actor.character .modplus {
+.swd6.sheet.actor.character .mod-plus {
   font-weight: bold;
   padding-left: 5px;
   padding-right: 5px;
@@ -89,37 +112,51 @@
   flex-flow: column;
 }
 .swd6.sheet.actor.character .cell {
-  flex-grow: 1;
+  padding-top: 5px;
+  padding-bottom: 5px;
   display: flex;
   flex-flow: column;
-  min-height: 100px;
+  flex-grow: 1;
+  max-height: 33%;
 }
-.swd6.sheet.actor.character .attribmain {
+.swd6.sheet.actor.character .cell .die-roll {
+  font-size: 17px;
+  margin: 4px;
+}
+.swd6.sheet.actor.character .cell .skill-add {
+  font-size: 17px;
+  margin: 4px;
+}
+.swd6.sheet.actor.character .attrib-main {
   display: flex;
   flex-flow: row;
   height: 30px;
 }
-.swd6.sheet.actor.character .attribmain .attribname {
+.swd6.sheet.actor.character .attrib-main .attrib-name {
   flex-grow: 1;
+  font-size: large;
 }
-.swd6.sheet.actor.character .attribmain .attribvalues {
-  width: 70px;
+.swd6.sheet.actor.character .attrib-main .attrib-values {
+  width: 95px;
 }
-.swd6.sheet.actor.character .attribskill {
+.swd6.sheet.actor.character .attrib-skill {
   flex-grow: 1;
   overflow-y: scroll;
+  margin-top: 5px;
+  border: darkgrey 1px solid;
 }
-.swd6.sheet.actor.character .attribskill .skillrow {
+.swd6.sheet.actor.character .attrib-skill .skill-row {
   display: flex;
   flex-flow: row;
   height: 30px;
   margin-left: 20px;
 }
-.swd6.sheet.actor.character .attribskill .skillname {
+.swd6.sheet.actor.character .attrib-skill .skill-name {
   flex-grow: 1;
+  margin-right: 10px;
 }
-.swd6.sheet.actor.character .attribskill .skillvalues {
-  width: 70px;
+.swd6.sheet.actor.character .attrib-skill .skill-values {
+  width: 120px;
 }
 .swd6.sheet.actor.character .item-list {
   list-style: none;

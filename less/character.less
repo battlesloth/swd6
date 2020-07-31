@@ -3,6 +3,26 @@
     min-width: 720px;
     min-height: 680px;
 
+    .new-skill-modal{
+        display: none;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 100;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+
+        .modal-content{
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+    }
+
+
     /* ----------------------------------------- */
     /*  Sheet Header                             */
     /* ----------------------------------------- */
@@ -14,10 +34,9 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
-        margin-bottom: 10px;
 
         .profile-img {
-            flex: 0 0 100px;
+            flex: 0 0 90px;
             height: 100px;
             margin-right: 10px;
         }
@@ -80,12 +99,19 @@
 
     }
 
+    a.attribute-control {
+        flex: 0 0 20px;
+        text-align: center;
+        line-height: 28px;
+        border: none;
+      }
+
     .value {
         width: 12px;
         text-align: center;
     }
 
-    .modplus {
+    .mod-plus {
         font-weight: bold;
         padding-left: 5px;
         padding-right: 5px;
@@ -111,51 +137,64 @@
     }
 
     .cell {
-        flex-grow: 1;
+        padding-top: 5px;
+        padding-bottom: 5px;
         display: flex;
         flex-flow: column;
-        min-height: 100px;
+        flex-grow: 1;
+        max-height: 33%;
+
+        .die-roll{
+            font-size: 17px;
+            margin: 4px;
+        }
+
+        .skill-add{
+            font-size: 17px;
+            margin: 4px;
+        }
     }
 
-    .attribmain {
+    .attrib-main {
         display: flex;
         flex-flow: row;
         height: 30px;
 
-        .attribname {
+        .attrib-name {
             flex-grow: 1;
+            font-size: large;
         }
 
-        .attribvalues {
-            width: 70px;
+        .attrib-values {
+            width: 95px;
         }
 
     }
 
 
-    .attribskill {
+    .attrib-skill {
         flex-grow: 1;
         overflow-y: scroll;
+        margin-top: 5px;
+        border: darkgrey 1px solid;
 
-        .skillrow {
+        .skill-row {
             display: flex;
             flex-flow: row;
             height: 30px;
             margin-left: 20px;
         }
 
-        .skillname {
+        .skill-name {
             flex-grow: 1;
+            margin-right: 10px;
         }
 
-        .skillvalues {
-            width: 70px;
+        .skill-values {
+            width: 120px;
         }
 
     }
-
-
-
 
     .item-list {
         list-style: none;
