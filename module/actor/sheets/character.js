@@ -10,7 +10,6 @@ export default class ActorSheetSwd6Character extends ActorSheetSwd6 {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["swd6", "sheet", "actor", "character"],
-      template: "systems/swd6/templates/actors/character-sheet.html",
       width: 600,
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "attributes" }],
@@ -41,36 +40,12 @@ export default class ActorSheetSwd6Character extends ActorSheetSwd6 {
       li.slideUp(200, () => this.render(false));
     });
 
-    html.find(".add-skill-ok").click(ev =>{
-      this._addNewSkill(ev);
-    });
-    html.find(".add-skill-cancel").click(ev =>{
-      document.getElementById(this.object._id + "-skill-modal").style.display = "none";
-    });
-    html.find(".skill-add").click(ev =>{
-      this._onClickAddSkill(event);
-    });
+    html.find(".skill-add").click(this._onClickAddSkill.bind(this));;
+
+
   }
 
-
-  async _addNewSkill(event){
-    event.preventDefault();
-    
-    var modal = document.getElementById(this.object._id + "-skill-modal"); 
-    var parent = modal.dataset.skillparent;      
-
-    var skill = {"name": "Test", "value": 3, "mod": 1}
-
-    switch(parent){
-      case "Knowledge":
-        this.actor.data.data.attributes.ment.kno.skills["test"] = skill;
-        break;
-    }
-    
-    modal.style.display = "none";
-    await this._onSubmit(event);
-  }
-  
+ 
   async _onClickAddSkill(event) {
     event.preventDefault();
  

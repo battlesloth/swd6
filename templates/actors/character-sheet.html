@@ -35,10 +35,10 @@
                                 <span class="mod-plus">
                                     <input class="mod" type="text" name="data.attributes.phys.{{id}}.value"
                                         value="{{attr.value}}" data-dtype="Number" />
-                                    +
-                                    <input class="value" type="text" name="data.attributes.phys.{{id}}.mod"
+                                        <span class="mod-plus">D + </span> 
+                                        <input class="value" type="text" name="data.attributes.phys.{{id}}.mod"
                                         value="{{attr.mod}}" data-dtype="Number" />
-                                    <a class="die-roll"><i class="fas fa-dice-six"></i></a>
+                                    <a class="skill-roll" data-name="{{attr.label}}" data-value="{{attr.value}}" data-mod="{{attr.mod}}"><i class="fas fa-dice-six"></i></a>
                                 </span>
                             </div>
                         </div>
@@ -51,11 +51,11 @@
                                     <input class="mod" type="text"
                                         name="data.attributes.phys.{{id}}.skills.{{key}}.value" value="{{skill.value}}"
                                         data-dtype="Number" />
-                                    +
+                                    <span class="mod-plus">D + </span>
                                     <input class="value" type="text"
                                         name="data.attributes.phys.{{id}}.skills.{{key}}.mod" value="{{skill.mod}}"
                                         data-dtype="Number" />
-                                    <a class="die-roll"><i class="fas fa-dice-six"></i></a>
+                                    <a class="skill-roll" data-name="{{skill.name}}" data-value="{{skill.value}}" data-mod="{{skill.mod}}"><i class="fas fa-dice-six"></i></a>
                                 </div>
                             </div>
                             {{/each}}
@@ -75,11 +75,11 @@
                                 <span class="mod-plus">
                                     <input class="mod" type="text" name="data.attributes.ment.{{id}}.value"
                                         value="{{attr.value}}" data-dtype="Number" />
-                                    +
+                                    <span  class="mod-plus">D + </span>
                                     <input class="value" type="text" name="data.attributes.ment.{{id}}.mod"
                                         value="{{attr.mod}}" data-dtype="Number" />
                                 </span>
-                                <a class="die-roll" ><i class="fas fa-dice-six"></i></a>
+                                <a class="skill-roll" data-name="{{attr.label}}" data-value="{{attr.value}}" data-mod="{{attr.mod}}"><i class="fas fa-dice-six"></i></a>
                             </div> 
                         </div>
                         <div id="{{../actor._id}}-ment.{{id}}-skills" class="attrib-skill">
@@ -91,11 +91,11 @@
                                     <input class="mod" type="text"
                                         name="data.attributes.ment.{{id}}.skills.{{key}}.value" value="{{skill.value}}"
                                         data-dtype="Number" />
-                                    +
+                                    <span class="mod-plus">D + </span>
                                     <input class="value" type="text"
                                         name="data.attributes.ment.{{id}}.skills.{{key}}.mod" value="{{skill.mod}}"
                                         data-dtype="Number" />
-                                    <a class="die-roll"><i class="fas fa-dice-six"></i></a>
+                                    <a class="skill-roll" data-name="{{skill.name}}" data-value="{{skill.value}}" data-mod="{{skill.mod}}"><i class="fas fa-dice-six"></i></a>
                                 </div>
                             </div>
                             {{/each}}

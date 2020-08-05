@@ -93,8 +93,8 @@
 }
 .swd6.sheet.actor.character .mod-plus {
   font-weight: bold;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 0px;
+  padding-right: 2px;
 }
 .swd6.sheet.actor.character .mod {
   width: 12px;
@@ -119,7 +119,7 @@
   flex-grow: 1;
   max-height: 33%;
 }
-.swd6.sheet.actor.character .cell .die-roll {
+.swd6.sheet.actor.character .cell .skill-roll {
   font-size: 17px;
   margin: 4px;
 }
@@ -137,7 +137,7 @@
   font-size: large;
 }
 .swd6.sheet.actor.character .attrib-main .attrib-values {
-  width: 95px;
+  width: 100px;
 }
 .swd6.sheet.actor.character .attrib-skill {
   flex-grow: 1;
@@ -156,7 +156,7 @@
   margin-right: 10px;
 }
 .swd6.sheet.actor.character .attrib-skill .skill-values {
-  width: 120px;
+  width: 145px;
 }
 .swd6.sheet.actor.character .item-list {
   list-style: none;
@@ -185,4 +185,21 @@
 }
 .swd6.sheet.actor.character .editor-content {
   height: 100%;
+}
+/* ----------------------------------------- */
+/*  Chat Cards
+/* ----------------------------------------- */
+.swd6.chat-card {
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+.swd6.chat-card .result-total {
+  font-size: x-large;
+}
+.swd6.chat-card .result-total.critical {
+  color: green;
+}
+.swd6.chat-card .result-total.fumble {
+  color: red;
 }
