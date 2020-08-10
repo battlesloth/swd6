@@ -2,15 +2,15 @@ export async function rollDice(rollData, dialogOptions) {
     let rolled = false;
     const speaker = rollData.speaker || ChatMessage.getSpeaker({actor: this});
 
-    const _roll = async function (rollData) {
-
+    const _roll = async function (rollData, bonusDie, bonusMod) {
+   
         let result = 0;
         let norm = [];
         let wild = [];
 
         let die = new Die(6);
 
-        die.roll(rollData.value - 1);
+        die.roll(rollData.value - 1 + bonusDie);
         die.rolls.forEach(n => {
           norm.push(n.roll);
         });
@@ -24,7 +24,7 @@ export async function rollDice(rollData, dialogOptions) {
 
         if (wild[0] === 1) {
             if (norm.length === 1) {
-                results = rollData.mod;
+                results = rollData.mod + bonusMod;
             } else {
                 var idx = 0;
                 var highest = 0;
@@ -40,11 +40,11 @@ export async function rollDice(rollData, dialogOptions) {
                 temp.splice(idx, 1);
 
                 result = temp.reduce((a,b) => a + b, 0);
-                result = result + rollData.mod;
+                result = result + rollData.mod + bonusMod;
             }
         } else {
             result = norm.reduce((a,b) => a + b, 0) + 
-                wild.reduce((a,b) => a + b, 0) + rollData.mod;
+                wild.reduce((a,b) => a + b, 0) + rollData.mod + bonusMod;
         }
 
         let resultColor = "";
@@ -55,13 +55,19 @@ export async function rollDice(rollData, dialogOptions) {
           resultColor = "critical";
         }
 
+        let bonusText = "";
+        if (bonusDie > 0 || bonusMod > 0){
+          bonusText = bonusText + ` + (${bonusDie}D + ${bonusMod})`
+        }
+        
         let resultDialogData = {
           skill: rollData.skill,
-          diceRoll: `${rollData.value}D + ${rollData.mod}`,
+          diceRoll: `${rollData.value}D + ${rollData.mod}${bonusText}`,
           resultColor: resultColor,
           result: result,
           normalRolls: `${norm.join(",")}`,
-          wildRolls: `${wild.join(",")}`
+          wildRolls: `${wild.join(",")}`,
+          mod: rollData.mod + bonusMod
         }
 
         let template = "systems/swd6/templates/chat/roll-result-dialog.html";
@@ -77,6 +83,8 @@ export async function rollDice(rollData, dialogOptions) {
   let dialogData = {
     skill: rollData.skill,
     value: `${rollData.value}D + ${rollData.mod}`,
+    bonusDie: 0,
+    bonusMod: 0,
     data: rollData
   };
   const html = await renderTemplate(template, dialogData);
@@ -90,7 +98,19 @@ export async function rollDice(rollData, dialogOptions) {
       buttons: {
         normal: {
           label: game.i18n.localize("Roll!"),
-          callback: html => roll = _roll(dialogData.data)
+          callback: html => {
+            let bonusDie =  html.find('.bonus-die-field')[0];
+            let bonusMod =  html.find('.bonus-mod-field')[0];
+            
+            if (isNaN(bonusDie.value)){
+              bonusDie.value = "0";
+            }
+            if (isNaN(bonusMod.value)){
+              bonusMod.value = "0";
+            }
+
+            roll = _roll(dialogData.data, parseInt(bonusDie.value), parseInt(bonusMod.value))           
+          }
         }
       },
       default: "normal",
