@@ -45,8 +45,7 @@
                         <div id="{{../actor._id}}-phys.{{id}}-skills" class="attrib-skill">
                             {{#each attr.skills as |skill key|}}
                             <div class="skill-row">
-                                <input class="skill-name" type="text"
-                                        name="data.attributes.phys.{{id}}.skills.{{key}}.name" value="{{skill.name}}"/>
+                                <span class="skill-name" id="data.attributes.ment.{{id}}.skills.{{key}}.name" >{{skill.name}}</span>
                                 <div class="skill-values">
                                     <input class="mod" type="text"
                                         name="data.attributes.phys.{{id}}.skills.{{key}}.value" value="{{skill.value}}"

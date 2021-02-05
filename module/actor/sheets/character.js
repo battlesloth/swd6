@@ -1,4 +1,5 @@
 import ActorSheetSwd6 from "./base.js"
+import NewSkillDialog from "../apps/new-skill.js"
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -41,8 +42,6 @@ export default class ActorSheetSwd6Character extends ActorSheetSwd6 {
     });
 
     html.find(".skill-add").click(this._onClickAddSkill.bind(this));;
-
-
   }
 
  
@@ -51,9 +50,53 @@ export default class ActorSheetSwd6Character extends ActorSheetSwd6 {
  
     const a = event.currentTarget;
     const action = a.dataset.action;
-    const parent = a.dataset.id;
+    var parent = a.dataset.id.split('.');
   
-    const skillList = document.getElementById(`${this.actor._id}-${parent}-skills`);
+    const category = parent[0];
+    const attribute = parent[1];
+    const label = this.actor.data.data.attributes[category][attribute].label;
+
+
+
+
+    let type = action === 'addSkill' ? 'Skill' : 'Specialization'
+
+    let newSkill = "error";
+
+    try{
+      newSkill = await NewSkillDialog.newSkillDialog({lables: {name: label, type: type}})
+    } catch(err){
+      console.log(err);
+      return;
+    }
+
+    var attr = this.actor.data.data.attributes[category][attribute];
+    
+    if ( action === "addskill" ) {
+      var exists = false;
+      
+      Object.entries(attr.skills).forEach(([key, value]) =>{
+        if (value.name.toLowerCase() === newSkill.toLowerCase()){
+          exists = true;
+        }
+      });
+
+      if (!exists){
+        const nk = Math.random().toString(36).substring(2) + Date.now().toString(36);
+
+        this.actor.data.data.attributes[category][attribute].skills[nk] = {
+          name:(newSkill.charAt(0).toUpperCase() + newSkill.slice(1)), 
+          value: attr.value, 
+          mod: attr.mod
+        };
+      }
+    }
+
+     await this._onSubmit(event);
+  
+
+     /*
+
 
     // Add new attribute
     if ( action === "addskill" ) {
@@ -65,7 +108,9 @@ export default class ActorSheetSwd6Character extends ActorSheetSwd6 {
       skillList.appendChild(newKey);
       await this._onSubmit(event);
     }
+    */
   }
+
 
   /* -------------------------------------------- */
 

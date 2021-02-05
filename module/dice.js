@@ -8,23 +8,26 @@ export async function rollDice(rollData, dialogOptions) {
         let norm = [];
         let wild = [];
 
-        let die = new Die(6);
+        var count = rollData.value - 1 + bonusDie;
 
-        die.roll(rollData.value - 1 + bonusDie);
-        die.rolls.forEach(n => {
-          norm.push(n.roll);
+        let die = new Die({faces: 6, number: count}).evaluate();
+
+
+        //die.roll(count);
+        die.results.forEach(n => {
+          norm.push(n.result);
         });
 
-        let wildDie = new Die(6);
-        wildDie.roll(1);
-        wildDie.explode([6]);
-        wildDie.rolls.forEach(n =>{
-          wild.push(n.roll);
+        let wildDie = new Die({faces:6, number: 1}).evaluate();
+        //wildDie.roll(1);
+        wildDie.explode('X');
+        wildDie.results.forEach(n =>{
+          wild.push(n.result);
         });
 
         if (wild[0] === 1) {
             if (norm.length === 1) {
-                results = rollData.mod + bonusMod;
+                result = rollData.mod + bonusMod;
             } else {
                 var idx = 0;
                 var highest = 0;
