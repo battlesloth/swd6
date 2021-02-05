@@ -1,7 +1,7 @@
 export default class NewSkillDialog extends Dialog{
-    constructor(labels, dialogData ={}, options={}){
+    constructor(label, dialogData ={}, options={}){
         super(dialogData, options);
-        this.labels = labels;
+        this.label = label;
     }
 
 
@@ -12,12 +12,11 @@ export default class NewSkillDialog extends Dialog{
         });
     }
 
-    static async newSkillDialog(labels){
+    static async newSkillDialog(label){
         return new Promise((resolve, reject) => {
-            let name = labels.name;
-            let type = labels.type;
-            const dlg = new this(labels, {
-                title: `Add ${name} ${type}`,
+            let attribute = label;
+            const dlg = new this(label, {
+                title: `Add ${attribute} Skill`,
                 buttons: {
                     add: {
                         icon:'<i class="fas fa-check"></i>',

@@ -1,5 +1,4 @@
 import ActorSheetSwd6 from "./base.js"
-import NewSkillDialog from "../apps/new-skill.js"
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -47,53 +46,16 @@ export default class ActorSheetSwd6Character extends ActorSheetSwd6 {
  
   async _onClickAddSkill(event) {
     event.preventDefault();
- 
+
     const a = event.currentTarget;
-    const action = a.dataset.action;
     var parent = a.dataset.id.split('.');
   
     const category = parent[0];
     const attribute = parent[1];
-    const label = this.actor.data.data.attributes[category][attribute].label;
 
+    await this._onSubmit(event);
+    return this.actor.addNewSkill(category, attribute);
 
-
-
-    let type = action === 'addSkill' ? 'Skill' : 'Specialization'
-
-    let newSkill = "error";
-
-    try{
-      newSkill = await NewSkillDialog.newSkillDialog({lables: {name: label, type: type}})
-    } catch(err){
-      console.log(err);
-      return;
-    }
-
-    var attr = this.actor.data.data.attributes[category][attribute];
-    
-    if ( action === "addskill" ) {
-      var exists = false;
-      
-      Object.entries(attr.skills).forEach(([key, value]) =>{
-        if (value.name.toLowerCase() === newSkill.toLowerCase()){
-          exists = true;
-        }
-      });
-
-      if (!exists){
-        const nk = Math.random().toString(36).substring(2) + Date.now().toString(36);
-
-        this.actor.data.data.attributes[category][attribute].skills[nk] = {
-          name:(newSkill.charAt(0).toUpperCase() + newSkill.slice(1)), 
-          value: attr.value, 
-          mod: attr.mod
-        };
-      }
-    }
-
-     await this._onSubmit(event);
-  
 
      /*
 
