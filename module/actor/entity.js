@@ -1,5 +1,5 @@
 import { rollDice } from "../dice.js"
-import NewSkillDialog from "../apps/new-skill.js"
+import ModifyAttributeDialog from "../apps/modify-attribute.js"
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -31,27 +31,27 @@ export default class ActorSwd6 extends Actor {
    * @param {string} category 
    * @param {string} attribute 
    */
-  async addNewSkill(category, attribute) {
+  async modifyAttribute(category, attr) {
 
     const data = this.data.data;
-    const key = `data.attributes.${category}.${attribute}`;
-    const label = data.attributes[category][attribute].label;
+    const key = `data.attributes.${category}.${attr}`;
     const updateData = {};
+
+    let attribute = data.attributes[category][attr];
+    let charpoints = data.abilities.charpoints; 
 
     let newSkill = "error";
 
     try {
-      newSkill = await NewSkillDialog.newSkillDialog(label)
+      newSkill = await ModifyAttributeDialog.modifyAttributeDialog(attribute, charpoints)
     } catch (err) {
       console.log(err);
       return;
     }
 
-    var attr = data.attributes[category][attribute];
-
     var exists = false;
 
-    Object.entries(attr.skills).forEach(([key, value]) => {
+    Object.entries(attribute.skills).forEach(([key, value]) => {
       if (value.name.toLowerCase() === newSkill.toLowerCase()) {
         exists = true;
       }
@@ -61,11 +61,11 @@ export default class ActorSwd6 extends Actor {
     if (!exists) {
       const nk = Math.random().toString(36).substring(2) + Date.now().toString(36);
 
-      updateData[`${key}.skills`] = data.attributes[category][attribute].skills;
+      updateData[`${key}.skills`] = data.attributes[category][attr].skills;
       updateData[`${key}.skills`][nk] = {
         name: (newSkill.charAt(0).toUpperCase() + newSkill.slice(1)),
-        value: attr.value,
-        mod: attr.mod
+        value: attribute.value,
+        mod: attribute.mod
       };
 
       // Perform the updates

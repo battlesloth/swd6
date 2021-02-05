@@ -40,11 +40,11 @@ export default class ActorSheetSwd6Character extends ActorSheetSwd6 {
       li.slideUp(200, () => this.render(false));
     });
 
-    html.find(".skill-add").click(this._onClickAddSkill.bind(this));;
+    html.find(".attrib-name").click(this._onClickModifyAttribute.bind(this));;
   }
 
  
-  async _onClickAddSkill(event) {
+  async _onClickModifyAttribute(event) {
     event.preventDefault();
 
     const a = event.currentTarget;
@@ -54,7 +54,7 @@ export default class ActorSheetSwd6Character extends ActorSheetSwd6 {
     const attribute = parent[1];
 
     await this._onSubmit(event);
-    return this.actor.addNewSkill(category, attribute);
+    return this.actor.modifyAttribute(category, attribute);
 
 
      /*

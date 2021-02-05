@@ -27,10 +27,7 @@
                     {{#each actor.data.attributes.phys as |attr id|}}
                     <div class="cell">
                         <div class="attrib-main">
-                            <a class="skill-add" data-action="addskill" data-id="phys.{{id}}"><i class="fas fa-plus"></i></a>
-                            <div class="attrib-name">
-                                {{attr.label}}
-                            </div>
+                            <a class="attrib-name" data-action="modify" data-id="phys.{{id}}">{{attr.label}}</a>
                             <div class="attrib-values">
                                 <span class="mod-plus">
                                     <input class="mod" type="text" name="data.attributes.phys.{{id}}.value"
@@ -66,10 +63,7 @@
                     {{#each actor.data.attributes.ment as |attr id|}}
                     <div class="cell">
                         <div class="attrib-main">
-                            <a class="skill-add" data-action="addskill" data-id="ment.{{id}}"><i class="fas fa-plus"></i></a>
-                            <div class="attrib-name">
-                                {{attr.label}}
-                            </div>
+                            <a class="attrib-name" data-action="modify" data-id="ment.{{id}}">{{attr.label}}</a>
                             <div class="attrib-values">
                                 <span class="mod-plus">
                                     <input class="mod" type="text" name="data.attributes.ment.{{id}}.value"

@@ -1,7 +1,16 @@
 <form onsubmit="event.preventDefault();">
     <div class="form-group">
-      <label>Name</label>
-      <input type='text' name='inputField'></input>
+      <p>{{attribute.label}}</p>
+    </div>
+    <div class="attrib-skill">
+      {{#each skills as |skill key|}}
+      <div class="skill-row"></div>
+        <span class="skill-name" id="{{key}}">{{skill.name}}</span>
+      </div>
+      {{/each}}
+    </div>
+    <div>
+      <p>Available points: {{charpoints.available}}</p>
     </div>
     <div class="dialog-buttons">
         {{#each buttons as |button id|}}

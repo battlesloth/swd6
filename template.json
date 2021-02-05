@@ -62,7 +62,8 @@
                         "value": 0
                     },
                     "charpoints": {
-                        "value": 0
+                        "available": 0,
+                        "spent": 0
                     }
                 }
             }

@@ -1,26 +1,37 @@
-export default class NewSkillDialog extends Dialog{
-    constructor(label, dialogData ={}, options={}){
+export default class ModifyAttributeDialog extends Dialog{
+    constructor(attribute, charpoints, dialogData ={}, options={}){
         super(dialogData, options);
-        this.label = label;
+        this.attribute = attribute;
+        this.charpoints = charpoints;
     }
 
-
+    /** @override */
     static get defaultOptions(){
         return mergeObject(super.defaultOptions,{
-            template: "systems/swd6/templates/apps/new-skill.html",
+            template: "systems/swd6/templates/apps/modify-attribute.html",
             classes: ["swd6","dialog"]
         });
     }
 
-    static async newSkillDialog(label){
+
+    /** @override */
+    getData(){
+        const data = super.getData();
+        data.attribute = this.attribute;
+        data.charpoints = this.charpoints;
+        data.skills = {d1:{ name:"Blaster"},d2:{ name:"Dodge"},d3:{ name:"Grenade"}};
+        return data;
+    }
+
+    static async modifyAttributeDialog(attribute, charpoints){
         return new Promise((resolve, reject) => {
-            let attribute = label;
-            const dlg = new this(label, {
-                title: `Add ${attribute} Skill`,
+            let label = attribute.label;
+            const dlg = new this(attribute, charpoints, {
+                title: `Modify ${label}`,
                 buttons: {
-                    add: {
+                    save: {
                         icon:'<i class="fas fa-check"></i>',
-                        label: "Add",
+                        label: "Save",
                         callback: html =>{
                             let result = html.find('input[name=\'inputField\']');
                             if (result.val()!== '') {
@@ -36,7 +47,7 @@ export default class NewSkillDialog extends Dialog{
                         callback: reject
                     },
                 },
-                default: 'cancel',
+                default: 'save',
                 close: reject
             });
             dlg.render(true);
