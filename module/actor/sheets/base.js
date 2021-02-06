@@ -1,3 +1,6 @@
+import SkillSelector from "../../apps/skill-selector.js";
+import { SWD6 } from "../../config.js";
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -9,14 +12,51 @@ export default class ActorSheetSwd6 extends ActorSheet {
 
   /** @override */
   getData() {
-    const data = super.getData();
-    for (let attr of Object.values(data.data.attributes.phys)) {
-      this._normalizeValues(attr);
+    //const data = super.getData();
+
+    let isOwner = this.entity.owner;
+
+    const data = {
+      owner: isOwner,
+      options: this.options,
+      config: CONFIG.SWD6
     }
-    for (let attr of Object.values(data.data.attributes.ment)) {
-      this._normalizeValues(attr);
-    }
+
+    data.actor = duplicate(this.actor.data);
+    data.data = data.actor.data;
+
+    this._prepareAttributes(data.actor.data);
+
     return data;
+  }
+
+  _prepareAttributes(data) {
+
+    const displayAttr = {}
+
+    for (let cat of Object.keys(data.attributes)) {
+
+      displayAttr[cat] = {}; 
+      
+      for (let attr of Object.keys(data.attributes[cat])) {
+
+        var val = data.attributes[cat][attr];
+
+        displayAttr[cat][attr] = {label: val.label, value: val.value, mod: val.mod, skills: {}};
+        var selected = {};
+        val.skills.forEach(s => {
+          selected[s.key] = {
+            name: s.name,
+            value: s.value,
+            mod: s.mod
+          }
+        });
+
+        displayAttr[cat][attr].skills = selected; 
+      }
+    }
+
+    data.displayAttributes = displayAttr;
   }
 
   /** @override */
@@ -28,46 +68,35 @@ export default class ActorSheetSwd6 extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
+    html.find('.skill-selector').click(this._onSkillSelector.bind(this));
     html.find('.skill-roll').click(this._onRollSkillCheck.bind(this));
   }
 
-    /**
-   * Handle rolling a Skill check
-   * @param {Event} event   The originating click event
-   * @private
-   */
+
+  /**
+  * Handle spawning the SkillSelector application which allows a checkbox of multiple skill options
+  * @param {Event} event   The click event which originated the selection
+  * @private
+  */
+  async _onSkillSelector(event) {
+    event.preventDefault();
+    const a = event.currentTarget;
+
+    await this._onSubmit(event);
+    this.actor.selectSkills(a.dataset.options, a.dataset.id, a.dataset.name);
+  }
+
+
+  /**
+ * Handle rolling a Skill check
+ * @param {Event} event   The originating click event
+ * @private
+ */
   _onRollSkillCheck(event) {
     event.preventDefault();
     const a = event.currentTarget;
     this.actor.rollSkill(a.dataset.name, parseInt(a.dataset.value), parseInt(a.dataset.mod));
   }
-  
-  _normalizeValues(attr) {
-    if (attr.value < 1) {
-      attr.value = 1;
-    }
 
-    if (attr.mod > 2) {
-      attr.mod = 2;
-    } else if (attr.mod < 0) {
-      attr.mod = 0;
-    }
 
-    for (let skill of Object.values(attr.skills)) {
-
-      // skills will never be lower than
-      if (skill.value <= attr.value || !skill.value) {
-        skill.value = attr.value;
-        if (skill.mod < attr.mod || !skill.mod) {
-          skill.mod = attr.mod;
-        }
-      }
-
-      if (skill.mod > 2) {
-        skill.mod = 2;
-      } else if (skill.mod < 0 || !skill.mod) {
-        skill.mod = 0;
-      }
-    }
-  }
 }

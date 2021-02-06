@@ -19,7 +19,7 @@ export default class ModifyAttributeDialog extends Dialog{
         const data = super.getData();
         data.attribute = this.attribute;
         data.charpoints = this.charpoints;
-        data.skills = {d1:{ name:"Blaster"},d2:{ name:"Dodge"},d3:{ name:"Grenade"}};
+        //data.skills = {d1:{ name:"Blaster"},d2:{ name:"Dodge"},d3:{ name:"Grenade"}};
         return data;
     }
 

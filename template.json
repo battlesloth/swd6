@@ -12,19 +12,19 @@
                             "label": "Dexterity",
                             "value": 3,
                             "mod": 0,
-                            "skills": {}
+                            "skills": []
                         },
                         "str": {
                             "label": "Strength",
                             "value": 3,
                             "mod": 0,
-                            "skills": {}
+                            "skills": []
                         },
                         "per": {
                             "label": "Perception",
                             "value": 3,
                             "mod": 0,
-                            "skills": {}
+                            "skills": []
                         }
                     },
                     "ment": {
@@ -32,19 +32,19 @@
                             "label": "Knowledge",
                             "value": 3,
                             "mod": 0,
-                            "skills": {}
+                            "skills": []
                         },
                         "mec": {
                             "label": "Mechanical",
                             "value": 3,
                             "mod": 0,
-                            "skills": {}
+                            "skills": []
                         },
                         "tec": {
                             "label": "Technical",
                             "value": 3,
                             "mod": 0,
-                            "skills": {}
+                            "skills": []
                         }
                     }
                 },

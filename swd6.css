@@ -203,3 +203,19 @@
 .swd6.chat-card .result-total.fumble {
   color: red;
 }
+/* ----------------------------------------- */
+/* Trait Selector
+/* ----------------------------------------- */
+#skill-selector .skill-list-container {
+  overflow-y: scroll;
+  height: 200px;
+}
+#skill-selector .skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#skill-selector input[type="text"] {
+  height: 24px;
+  margin: 2px;
+}

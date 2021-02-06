@@ -38,40 +38,9 @@ export default class ActorSheetSwd6Character extends ActorSheetSwd6 {
       const li = $(ev.currentTarget).parents(".item");
       this.actor.deleteOwnedItem(li.data("itemId"));
       li.slideUp(200, () => this.render(false));
-    });
-
-    html.find(".attrib-name").click(this._onClickModifyAttribute.bind(this));;
+    });   
   }
 
- 
-  async _onClickModifyAttribute(event) {
-    event.preventDefault();
-
-    const a = event.currentTarget;
-    var parent = a.dataset.id.split('.');
-  
-    const category = parent[0];
-    const attribute = parent[1];
-
-    await this._onSubmit(event);
-    return this.actor.modifyAttribute(category, attribute);
-
-
-     /*
-
-
-    // Add new attribute
-    if ( action === "addskill" ) {
-      const nk = Math.random().toString(36).substring(2) + Date.now().toString(36);
-      let newKey = document.createElement("div");
-      newKey.innerHTML = `<input type="text" name="data.attributes.${parent}.skills.${nk}.name" value="New Skill"/>`;
-      
-      newKey = newKey.children[0];
-      skillList.appendChild(newKey);
-      await this._onSubmit(event);
-    }
-    */
-  }
 
 
   /* -------------------------------------------- */

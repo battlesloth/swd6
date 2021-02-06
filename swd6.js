@@ -5,6 +5,7 @@
  */
 
 // Import Modules
+import {SWD6} from "./module/config.js"
 import { preloadHandlebarsTemplates } from "./module/templates.js";
 
 // Import Entities
@@ -15,6 +16,8 @@ import ItemSwd6 from "./module/item/entity.js";
 // Import Applications
 import ItemSheetSwd6 from "./module/item/item-sheet.js";
 import ActorSheetSwd6Character from "./module/actor/sheets/character.js";
+import SkillSelector from "./module/apps/skill-selector.js";
+
 
 // Import Helpers
 import * as dice from "./module/dice.js";
@@ -24,14 +27,16 @@ import * as dice from "./module/dice.js";
 /* -------------------------------------------- */
 
 Hooks.once("init", async function () {
-  console.log(`Initializing Star Wars D6 System`);
+  console.log(`SWD6 | Initializing Star Wars D6 System\n${SWD6.ASCII}`);
 
   // Create a namespace within the game global
   game.swd6 = {
     applications: {
       ActorSheetSwd6Character,
-      ItemSheetSwd6
+      ItemSheetSwd6,
+      SkillSelector,
     },
+    config: SWD6,
     dice: dice,
     entities: {
       ActorSwd6,
@@ -39,10 +44,9 @@ Hooks.once("init", async function () {
     }
   };
 
-  /**
-   * Set an initiative formula for the system
-   * @type {String}
-   */
+  CONFIG.SWD6 = SWD6;
+
+  // Set an initiative formula for the system
   CONFIG.Combat.initiative = {
     formula: "1d20",
     decimals: 2
