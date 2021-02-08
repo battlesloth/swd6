@@ -17,6 +17,7 @@ import ItemSwd6 from "./module/item/entity.js";
 import ItemSheetSwd6 from "./module/item/item-sheet.js";
 import ActorSheetSwd6Character from "./module/actor/sheets/character.js";
 import SkillSelector from "./module/apps/skill-selector.js";
+import ModifyDieCodeDialog from "./module/apps/modify-die-code.js";
 
 
 // Import Helpers
@@ -35,6 +36,7 @@ Hooks.once("init", async function () {
       ActorSheetSwd6Character,
       ItemSheetSwd6,
       SkillSelector,
+      ModifyDieCodeDialog,
     },
     config: SWD6,
     dice: dice,

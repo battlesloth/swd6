@@ -28,25 +28,21 @@
                     <div class="cell">
                         <div class="attrib-main">
                             <a class="skill-selector attrib-name" data-name="{{attr.label}}" data-id="phys.{{id}}" data-options="{{id}}Skills">{{attr.label}}</a>
-                            <div class="attrib-values">
-                                <span class="mod-plus">
-                                    <input class="mod" type="text" name="data.attributes.phys.{{id}}.value" value="{{attr.value}}" data-dtype="Number" />
-                                    <span class="mod-plus">D + </span> 
-                                    <input class="value" type="text" name="data.attributes.phys.{{id}}.mod" value="{{attr.mod}}" data-dtype="Number" />
-                                    <a class="skill-roll" data-name="{{attr.label}}" data-value="{{attr.value}}" data-mod="{{attr.mod}}"><i class="fas fa-dice-six"></i></a>
-                                </span>
-                            </div>
+                            <span class="mod-plus">
+                                <a class="modify-die-code"  data-id="phys.{{id}}" data-options="attribute">
+                                    <span class="die-code">{{attr.value}}D + {{attr.mod}}</span>
+                                </a>
+                                <a class="skill-roll" data-name="{{attr.label}}" data-value="{{attr.value}}" data-mod="{{attr.mod}}"><i class="fas fa-dice-six"></i></a>
+                            </span>
                         </div>
                         <div id="phys-{{id}}-skills" class="attrib-skill">
                             {{#each attr.skills as |skill key|}}
-                            <div class="skill-row">                               
-                             <span class="skill-name"  >{{skill.name}}{{key}}</span>
+                            <div class="skill-row">
+                                <span class="skill-name">{{skill.name}}</span>
                                 <div class="skill-values">
-                                    <input class="mod" type="text" value="{{skill.value}}"
-                                        data-dtype="Number" />
-                                    <span class="mod-plus">D + </span>
-                                    <input class="value" type="text" value="{{skill.mod}}"
-                                        data-dtype="Number" />
+                                    <a class="modify-die-code" data-id="phys.{{id}}.{{key}}" data-options="skill">
+                                        <span>{{skill.value}}D + {{skill.mod}}</span>
+                                    </a>
                                     <a class="skill-roll" data-name="{{skill.name}}" data-value="{{skill.value}}" data-mod="{{skill.mod}}"><i class="fas fa-dice-six"></i></a>
                                 </div>
                             </div>
@@ -60,29 +56,21 @@
                     <div class="cell">
                         <div class="attrib-main">
                             <a class="skill-selector attrib-name" data-name="{{attr.label}}" data-id="ment.{{id}}" data-options="{{id}}Skills">{{attr.label}}</a>
-                            <div class="attrib-values">
-                                <span class="mod-plus">
-                                    <input class="mod" type="text" name="data.attributes.ment.{{id}}.value"
-                                        value="{{attr.value}}" data-dtype="Number" />
-                                    <span  class="mod-plus">D + </span>
-                                    <input class="value" type="text" name="data.attributes.ment.{{id}}.mod"
-                                        value="{{attr.mod}}" data-dtype="Number" />
-                                </span>
+                            <span class="mod-plus">
+                                <a class="modify-die-code" data-id="ment.{{id}}" data-options="attribute">
+                                    <span class="die-code">{{attr.value}}D + {{attr.mod}}</span>
+                                </a>
                                 <a class="skill-roll" data-name="{{attr.label}}" data-value="{{attr.value}}" data-mod="{{attr.mod}}"><i class="fas fa-dice-six"></i></a>
-                            </div> 
+                            </span>
                         </div>
                         <div id="{{../actor._id}}-ment.{{id}}-skills" class="attrib-skill">
                             {{#each attr.skills as |skill key|}}
                             <div class="skill-row">
-                                <span class="skill-name" id="data.attributes.ment.{{id}}.skills.{{key}}.name" >{{skill.name}}{{key}}</span>
+                                <span class="skill-name">{{skill.name}}</span>
                                 <div class="skill-values">
-                                    <input class="mod" type="text"
-                                        name="data.attributes.ment.{{id}}.skills.{{key}}.value" value="{{skill.value}}"
-                                        data-dtype="Number" />
-                                    <span class="mod-plus">D + </span>
-                                    <input class="value" type="text"
-                                        name="data.attributes.ment.{{id}}.skills.{{key}}.mod" value="{{skill.mod}}"
-                                        data-dtype="Number" />
+                                    <a class="modify-die-code" data-id="ment.{{id}}.{{key}}" data-options="skill">
+                                        <span class="die-code">{{skill.value}}D + {{skill.mod}}</span>
+                                    </a>
                                     <a class="skill-roll" data-name="{{skill.name}}" data-value="{{skill.value}}" data-mod="{{skill.mod}}"><i class="fas fa-dice-six"></i></a>
                                 </div>
                             </div>

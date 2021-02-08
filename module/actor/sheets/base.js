@@ -44,6 +44,9 @@ export default class ActorSheetSwd6 extends ActorSheet {
 
         displayAttr[cat][attr] = {label: val.label, value: val.value, mod: val.mod, skills: {}};
         var selected = {};
+
+        val.skills.sort((a, b) => a.name.localeCompare(b.name));
+
         val.skills.forEach(s => {
           selected[s.key] = {
             name: s.name,
@@ -66,10 +69,12 @@ export default class ActorSheetSwd6 extends ActorSheet {
 
   /** @override */
   activateListeners(html) {
-    super.activateListeners(html);
-
+  
     html.find('.skill-selector').click(this._onSkillSelector.bind(this));
+    html.find('.modify-die-code').click(this._onModifyDieCode.bind(this));
     html.find('.skill-roll').click(this._onRollSkillCheck.bind(this));
+
+    super.activateListeners(html);
   }
 
 
@@ -86,6 +91,18 @@ export default class ActorSheetSwd6 extends ActorSheet {
     this.actor.selectSkills(a.dataset.options, a.dataset.id, a.dataset.name);
   }
 
+
+  /**
+   * Handle spawnign the ModifyDieCode application which allows changing a die code
+   * @param {Event} event 
+   */
+  async _onModifyDieCode(event) {
+    event.preventDefault();
+    const a = event.currentTarget;
+
+    await this._onSubmit(event);
+    this.actor.modifyDieCode(a.dataset.options, a.dataset.id);
+  }
 
   /**
  * Handle rolling a Skill check

@@ -1,7 +1,7 @@
 import { rollDice } from "../dice.js";
-import ModifyAttributeDialog from "../apps/modify-attribute.js";
 import SkillSelector from "../apps/skill-selector.js";
-import {SWD6} from '../config.js';
+import ModifyDieCodeDialog from "../apps/modify-die-code.js";
+import { SWD6 } from '../config.js';
 
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
@@ -36,29 +36,128 @@ export default class ActorSwd6 extends Actor {
    * @param {string} parent 
    * @param {string} label 
    */
- selectSkills(key, parent, label){
-    
+  selectSkills(key, parent, label) {
+
     var parts = parent.split(".");
     const category = parts[0];
     const attribute = parts[1];
 
     const choices = CONFIG.SWD6[key];
 
-    const options = { 
-      category: category, 
+    const options = {
+      category: category,
       attribute: attribute,
-      name: label, 
+      name: label,
       title: label,
-      choices };
+      choices
+    };
 
     new SkillSelector(this, options).render(true)
- }
+  }
 
- /**
-   * Normalizes skill values to attriute value
-   * This might be getting depricated....
-   * @param {attribute} attr 
-   */
+
+  async modifyDieCode(type, id) {
+
+    let dieCode = {};
+    let newValue = {};
+
+    let charpoints = this.data.data.abilities.charpoints;
+
+    switch (type) {
+      case "attribute":
+        dieCode = this._getAttributeDieCode(id)
+        break
+      case "skill":
+        dieCode = this._getSkillDieCode(id);
+        break
+    }
+
+    try {
+      newValue = await ModifyDieCodeDialog.modifyDieCodeDialog(dieCode, charpoints);
+    } catch (err) {
+      console.log(err);
+      return;
+    }
+
+    switch (type) {
+      case "attribute":
+        await this._setAttributeDieCode(id, newValue);
+        break
+      case "skill":
+        await this._setSkillDieCode(id, newValue);
+        break
+    }
+  }
+
+  _getAttributeDieCode(id) {
+    var parts = id.split('.');
+    var die = this.data.data.attributes[parts[0]][parts[1]]
+
+    return {
+      label: die.label,
+      type: "attribute",
+      id: id,
+      value: die.value,
+      mod: die.mod
+    }
+  }
+
+  _getSkillDieCode(id) {
+    var parts = id.split('.');
+    var skills = this.data.data.attributes[parts[0]][parts[1]].skills
+
+    var skill = skills.find(e => e.key === parts[2]);
+
+    return {
+      label: skill.name,
+      type: "skill",
+      id: id,
+      value: skill.value,
+      mod: skill.mod
+    }
+  }
+
+  async _setAttributeDieCode(id, newValue) {
+    var parts = id.split('.');
+    const update ={};
+    const key = `data.attributes.${parts[0]}`;
+
+    var cat = this.data.data.attributes[parts[0]]
+
+    cat[parts[1]].value = newValue.value;
+    cat[parts[1]].mod = newValue.mod;
+
+    update[key] = cat;
+
+    await this.update(update);
+  }
+
+  async _setSkillDieCode(id, newValue) {
+    let parts = id.split('.');
+    const update ={};
+    const key = `data.attributes.${parts[0]}.${parts[1]}.skills`;
+
+    let skills = this.data.data.attributes[parts[0]][parts[1]].skills
+
+    for (let i in skills){
+      if (skills[i].key === parts[2]){
+        skills[i].value = newValue.value;
+        skills[i].mod = newValue.mod;
+      }
+    }
+
+    update[key] = skills;
+
+    await this.update(update);
+  }
+
+
+
+  /**
+    * Normalizes skill values to attriute value
+    * This might be getting depricated....
+    * @param {attribute} attr 
+    */
   _normalizeValues(attr) {
     if (attr.value < 1) {
       attr.value = 1;

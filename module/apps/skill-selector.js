@@ -52,17 +52,20 @@ export default class SkillSelector extends FormApplication {
 
     // Populate choices
     const choices = duplicate(this.options.choices);
+    const display = {};
+
     for (let [k, v] of Object.entries(choices)) {
-      choices[k] = {
-        label: v,
-        chosen: attr ? skillList.includes(k) : false
+      if (!skillList.includes(k)){
+        display[k] = {
+          label: v,
+          chosen: false
+        }
       }
     }
 
     // Return data
     return {
-      choices: choices,
-      
+      choices: display,     
     }
   }
 

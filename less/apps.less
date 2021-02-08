@@ -1,22 +1,55 @@
-/* ----------------------------------------- */
-/* Trait Selector
+.swd6 {
+  /* ----------------------------------------- */
+  /* Trait Selector
 /* ----------------------------------------- */
 
-#skill-selector {
+  #skill-selector {
 
-  .skill-list-container {
-    overflow-y: scroll;
-    height: 200px;
+    .skill-list-container {
+      overflow-y: scroll;
+      height: 200px;
+    }
+
+    .skill-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    input[type="text"] {
+      height: 24px;
+      margin: 2px;
+    }
   }
 
-  .skill-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
 
-  input[type="text"] {
-    height: 24px;
-    margin: 2px;
+
+  /* ----------------------------------------- */
+  /* Modify Die Code Dialog
+/* ----------------------------------------- */
+
+  .mod-group {
+    
+    display: flex;
+    flex-direction: row;
+
+    .mod-spacer{
+      flex: 1;
+    }
+
+    .die-code {
+      flex: 3;
+      text-align: center;
+      font-size: x-large;
+    }
+
+    .mod-button {
+
+      flex: 1;
+    }
+
+    .mod-button:active {
+        outline: none;
+      }
   }
 }

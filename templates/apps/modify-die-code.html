@@ -1,0 +1,20 @@
+<form id="mod-die-code" onsubmit="event.preventDefault();">
+    <div class="mod-group">
+      <span class="mod-spacer"></span>
+      <button id="mod-down" class="mod-button"><i class="far fa-caret-square-down mod-down"></i></button>
+      <span class="die-code">{{dieCode.value}}D + {{dieCode.mod}}</span>
+      <button id="mod-up" class="mod-button" ><i class="far fa-caret-square-up mod-up"></i></button>
+      <span class="mod-spacer"></span>
+    </div>
+    <div>
+      <p>Available points: {{charpoints.available}}</p>
+    </div>
+    <div class="dialog-buttons">
+        {{#each buttons as |button id|}}
+        <button class="dialog-button" data-button="{{id}}">
+            {{{button.icon}}}
+            {{{button.label}}}
+        </button>
+        {{/each}}
+    </div>
+  </form>
