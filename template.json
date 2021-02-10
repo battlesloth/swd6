@@ -6,6 +6,11 @@
         ],
         "templates": {
             "common": {
+                "details":{
+                    "species":"",
+                    "type":"",
+                    "forcesense": false
+                },
                 "attributes": {
                     "phys": {
                         "dex": {

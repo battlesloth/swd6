@@ -1,13 +1,87 @@
 <form class="{{cssClass}}" autocomplete="off">
 
     {{!-- Sheet Header --}}
-    <header class="sheet-header">
-        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
-        <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
-            <div class="resource">
-                <span>Character points: </span><input name="data.abilities.charpoints.available" type="text" data-dtype="Number" value="{{actor.data.abilities.charpoints.available}}" />
-            </div>
+    <header class="sheet-header flexrow">
+        <img class="profile-img" src="{{actor.img}}" title="{{actor.name}}" data-edit="img">
+        <section class="header-details flexrow">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{actor.name}}" placeholder="Name">
+            </h1>
+
+            
+            {{!-- Character Status --}}
+            <aside class="header-status">
+                <h3>Status</h3>
+                <ul class="flexrow">
+                    <li class="dead-not">D</li>
+                    <li class="mortally-wounded-not">M</li>
+                    <li class="incapacitated-not">I</li>
+                    <li class="wounded-twice inactive">W</li>
+                    <li class="wounded">W</li>
+                    <li class="stunned">S</li>
+                </ul>
+            </aside>
+
+            {{!-- Character Summary --}}
+            <ul class="summary flexrow">
+                <li>
+                    <input type="text" name="data.details.species" value="{{data.details.species}}" placeholder="Species">
+                </li>
+                <li>
+                    <input type="text" name="data.details.type" value="{{data.details.type}}" placeholder="Type">
+                </li>
+                <li>
+                    <div>
+                        <label class="force-sense" for="forceSense">Force Sensitive? </label><input class="force-sense" id="forceSense" name="data.details.forcesense" type="checkbox" {{checked data.details.forcesense}}/>
+                    </div>
+                </li>
+            </ul>
+
+            {{!-- Header Attributes --}}
+            <ul class="attributes flexrow">                          
+                <li class="attribute">
+                    <a><h4 class="attribute-name box-title">Character Points</h4></a>
+                    <div class="attribute-value multiple">
+                        <label class="hit-dice">0 <span class="sep"> / </span> 0</label>
+                    </div>
+                    <footer class="attribute-footer">
+                        Available/Earned
+                    </footer>
+                </li>
+                <li class="attribute">
+                    <h4 class="attribute-name box-title">Force Points</h4>
+                    <div class="attribute-value">
+                        <input name="data.abilities.forcepoints.value" type="number" value="{{data.abilities.forcepoints.value}}" placeholder="0" >
+                    </div>
+                </li> 
+                <li class="attribute">
+                    <h4 class="attribute-name box-title">Dark Side Points</h4>
+                    <div class="attribute-value">
+                        <input name="data.abilities.darkside.value" type="number" value="{{data.abilities.darkside.value}}" placeholder="0" >
+                    </div>
+                </li>            
+                <li class="attribute">
+                    <h4 class="attribute-name box-title">
+                        Movement
+                    </h4>
+                    <div class="attribute-value">
+                        <input name="data.abilities.move.value" type="number" value="{{data.abilities.move.value}}" placeholder="10">
+                    </div>
+                    <footer class="attribute-footer">
+                        <span></span>
+                    </footer>
+                </li>                    
+                <li class="attribute">
+                    <h4 class="attribute-name box-title">
+                        Initiative
+                    </h4>
+                    <div class="attribute-value">
+                        <span>{{actor.data.displayAttributes.phys.per.value}}D + {{actor.data.displayAttributes.phys.per.mod}}</span>
+                    </div>
+                    <footer class="attribute-footer">
+                        <span></span>
+                    </footer>
+                </li>                          
         </div>
     </header>
 

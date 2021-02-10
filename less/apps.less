@@ -16,10 +16,21 @@
     background: @colorLight;
 }
 
+::-webkit-scrollbar-thumb {
+  outline: none;
+  border-radius: 3px;
+  background: @colorShadow;
+  border: 1px solid @colorBlue;
+}
+
 a{
-    &:hover{
-        text-shadow: 0 0 8px @colorBlue;
-    }
+  &:hover{
+    text-shadow: 0 0 8px @colorBlue;
+  }
+}
+
+.item.active {
+  text-shadow: 0 0 10px @colorBlue;
 }
 
 input[type="text"],
@@ -185,7 +196,6 @@ input[type="number"] {
               float: left;
               margin: 2px 0;
               border-right: @grooveLight;
-              line-height: 34px;
               color: @colorShadow;
 
               &:last-child {
