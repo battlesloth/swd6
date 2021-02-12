@@ -1,3 +1,5 @@
+@import "variables.less";
+
 .swd6.sheet.actor.character {
 
     min-width: 720px;
@@ -14,10 +16,10 @@
         left: 0;
 
         .modal-content{
-            background-color: #fefefe;
+            background-color: @colorLight;
             margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
-            border: 1px solid #888;
+            border: 1px solid @colorFaint;
             width: 80%;
         }
     }
@@ -28,49 +30,26 @@
     /* ----------------------------------------- */
 
     .sheet-header {
-        height: 100px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
 
-        .profile-img {
-            flex: 0 0 90px;
-            height: 100px;
-            margin-right: 10px;
-        }
-
-        .header-fields {
-            flex: 1;
-            height: 100px;
-        }
-
-        h1.charname {
-            height: 50px;
-            padding: 0px;
-            margin: 5px 0;
-            border-bottom: 0;
-
-            input {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-            }
+        img.profile {
+            flex: 0 0 160px;
+            max-width: 160px;
+            height: 160px;
         }
     }
+
 
     /* ----------------------------------------- */
     /*  Tabs                                     */
     /* ----------------------------------------- */
 
     .tabs {
-        height: 40px;
-        border-top: 1px solid #AAA;
-        border-bottom: 1px solid #AAA;
+        height: 28px;
+        border-top: 0;
+        border-bottom: 1px solid @colorFaint;
 
         .item {
-            line-height: 40px;
+            line-height: 28px;
             font-weight: bold;
 
             .active {
@@ -95,7 +74,7 @@
 
     .attributes {
         height: 100%;
-        overflow-y: auto;
+        overflow-y: hidden;
 
     }
 
@@ -205,7 +184,7 @@
             height: 30px;
             line-height: 24px;
             padding: 3px 0;
-            border-bottom: 1px solid #BBB;
+            border-bottom: 1px solid @colorFaint;
 
             img {
                 flex: 0 0 24px;

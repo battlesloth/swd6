@@ -1,7 +1,7 @@
 import { rollDice } from "../dice.js";
 import SkillSelector from "../apps/skill-selector.js";
 import ModifyDieCodeDialog from "../apps/modify-die-code.js";
-import { SWD6 } from '../config.js';
+
 
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
